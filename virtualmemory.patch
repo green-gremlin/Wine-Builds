@@ -7,9 +7,9 @@ index dce03c2..45a3b78 100644
      /* Round parameters to a page boundary */
  
 -    if (is_beyond_limit( 0, size, working_set_limit )) return STATUS_WORKING_SET_LIMIT_RANGE;
-+    // Get the environment variable value, default to 4096L << 20 if not set
++    // Get the environment variable value, default to 6144L << 20 if not set
 +    const char *env_var = getenv("WINE_VIRTUAL_MEMORY_SIZE");
-+    ULONG_PTR env_size_limit = env_var ? strtol(env_var, NULL, 10) << 20 : 4096L << 20;
++    ULONG_PTR env_size_limit = env_var ? strtol(env_var, NULL, 10) << 20 : 6144L << 20;
 +
 +    if (is_beyond_limit( 0, size, working_set_limit ) || size > env_size_limit)
 +        return STATUS_WORKING_SET_LIMIT_RANGE;
