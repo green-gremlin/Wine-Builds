@@ -536,13 +536,13 @@ patch -d wine -Np1 < "${scriptdir}"/virtualmemory.patch || {
     }
     clear
 
-#if [ "$WINE_BRANCH" = "vanilla" ] || [ "$WINE_BRANCH" = "staging" ]; then
-#    patch -d wine -Np1 < "${scriptdir}"/wine-cpu-topology.patch || {
-#        echo "Error: failed to apply CPU topology patch..."
-#	exit 1
-#    }
-#    clear
-#fi
+if [ "$WINE_BRANCH" = "vanilla" ] || [ "$WINE_BRANCH" = "staging" ]; then
+    patch -d wine -Np1 < "${scriptdir}"/wine-cpu-topology.patch || {
+        echo "Error: failed to apply CPU topology patch..."
+	exit 1
+    }
+    clear
+fi
 
 if [ ! -d wine ]; then
 	clear
